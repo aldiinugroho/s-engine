@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-kibana
+  namespace: macf
+  labels:
+    app: deploy-kibana
+spec:
+  selector:
+    matchLabels:
+      app: deploy-kibana
+  replicas: 1
+  strategy:
+  template:
+    metadata:
+      labels:
+        app: deploy-kibana
+    spec:
+      containers:
+        - name: deploy-kibana
+          image: kibana:8.14.3
+          ports:
+            - containerPort: 5601
+              name: deploy-kibana

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-grafana
+  namespace: macf
+spec:
+  selector:
+    app: deploy-grafana
+  type: LoadBalancer
+  ports:
+    - name: service-grafana
+      protocol: TCP
+      port: 3636
+      targetPort: 3000

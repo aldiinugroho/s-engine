@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-grafana
+  namespace: macf
+  labels:
+    app: deploy-grafana
+spec:
+  selector:
+    matchLabels:
+      app: deploy-grafana
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: deploy-grafana
+    spec:
+      containers:
+        - name: deploy-grafana
+          image: grafana/grafana:latest
+          ports:
+            - containerPort: 3000
+              name: deploy-grafana

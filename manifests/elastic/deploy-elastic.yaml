@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-elastic
+  namespace: macf
+  labels:
+    app: deploy-elastic
+spec:
+  selector:
+    matchLabels:
+      app: deploy-elastic
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: deploy-elastic
+    spec:
+      containers:
+        - name: deploy-elastic
+          image: elasticsearch:8.14.3
+          ports:
+            - containerPort: 9200
+              name: deploy-elastic

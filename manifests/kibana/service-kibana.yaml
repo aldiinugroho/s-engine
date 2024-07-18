@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-kibana
+  namespace: macf
+spec:
+  selector:
+    app: service-kibana
+  type: LoadBalancer
+  ports:
+    - name: service-kibana
+      protocol: TCP
+      port: 5601
+      targetPort: 5601

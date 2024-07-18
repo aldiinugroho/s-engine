@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-loki
+  namespace: macf
+  labels:
+    app: deploy-loki
+spec:
+  selector:
+    matchLabels:
+      app: deploy-loki
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: deploy-loki
+    spec:
+      containers:
+        - name: deploy-loki
+          image: grafana/loki:latest
+          ports:
+            - containerPort: 3100
+              name: deploy-loki
